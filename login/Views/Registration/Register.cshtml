@@ -1,0 +1,95 @@
+﻿@model login.Models.User
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Rejestracja użytkownika</h2>
+
+
+@using (Html.BeginForm())
+{
+@Html.AntiForgeryToken()
+@Html.ValidationSummary(true, "Bledna rejestracja")
+<form>
+    <div class="panel-body">
+        <div class="form-group">
+            <label class="col-md-3">Imię</label>
+            <div class="col-md-9">
+                <div class="input-group">
+                    <span class="input-group-addon"></span>
+                    @Html.TextBoxFor(u => u.FirstName)
+                    <br />
+                    @Html.ValidationMessageFor(u => u.FirstName)
+
+                </div>
+            </div>
+            <br />
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-3">Nazwisko</label>
+            <div class="col-md-9">
+                <div class="input-group">
+                    <span class="input-group-addon"></span>
+                    @Html.TextBoxFor(u => u.LastName)
+                    <br />
+                    @Html.ValidationMessageFor(u => u.LastName)
+                </div>
+            </div>
+            <br />
+        </div>
+        <div class="form-group">
+            <label class="col-md-3">User Name</label>
+            <div class="col-md-9">
+                <div class="input-group">
+                    <span class="input-group-addon"></span>
+                    @Html.TextBoxFor(u => u.UserName)
+                    <br />
+                    @Html.ValidationMessageFor(u => u.UserName)
+                </div>
+            </div>
+            <br />
+        </div>
+        <div class="form-group">
+            <label class="col-md-3">Email</label>
+            <div class="col-md-9">
+                <div class="input-group">
+                    <span class="input-group-addon"></span>
+                    @Html.TextBoxFor(u => u.Email)
+                    <br />
+                    @Html.ValidationMessageFor(u => u.Email)
+                </div>
+            </div>
+            <br />
+        </div>
+        <div class="form-group">
+            <label class="col-md-3">Hasło</label>
+            <div class="col-md-9">
+                <div class="input-group">
+                    <span class="input-group-addon"></span>
+                    @Html.TextBoxFor(u => u.Password)
+                    <br />
+                    @Html.ValidationMessageFor(u => u.Password)
+                </div>
+            </div>
+            <br />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+    </div>
+</form>
+
+
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+

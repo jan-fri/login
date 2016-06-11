@@ -1,0 +1,32 @@
+﻿@model login.Models.User
+
+@{
+    ViewBag.Title = "mPodroznik Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "Bledna rejestracja")
+<form>
+    <div class="form-group">
+        <label>@Html.LabelFor(u => u.Email)</label>
+        <br />
+        @Html.TextBoxFor(u => u.Email)
+        @Html.ValidationMessageFor(u => u.Email)
+    </div>
+    <div class="form-group">
+        <label>@Html.LabelFor(u => u.Password)</label>
+        <br />
+        @Html.TextBoxFor(u => u.Password)
+        @Html.ValidationMessageFor(u => u.Password)
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
